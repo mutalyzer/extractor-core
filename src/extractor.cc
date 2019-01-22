@@ -71,6 +71,18 @@ static double frame_shift_frequency[128][128][5] = {{{.0f}}};
 // repeat masking
 static char_t const MASK = '$';
 
+
+std::vector<Variant> extract_dna(char_t const* const reference,
+                                 size_t const        reference_length,
+                                 char_t const* const sample,
+                                 size_t const        sample_length)
+{
+    std::vector<Variant> result;
+    extract(result, reference, reference_length, sample, sample_length, TYPE_DNA);
+    return result;
+} // extract_dna
+
+
 // Only used to interface to Python: calls the C++ extract function.
 Variant_List extract(char_t const* const reference,
                      size_t const        reference_length,

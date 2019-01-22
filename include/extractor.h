@@ -190,6 +190,13 @@ struct Variant_List
   std::vector<Variant> variants;
 }; // Variant_List
 
+
+std::vector<Variant> extract_dna(char_t const* const reference,
+                                 size_t const        reference_length,
+                                 char_t const* const sample,
+                                 size_t const        sample_length);
+
+
 // *******************************************************************
 // extract function
 //   This function is the interface function for Python. It is just a
