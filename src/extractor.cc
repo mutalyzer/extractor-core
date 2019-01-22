@@ -10,7 +10,7 @@
 //   accepted by the Mutalyzer Name Checker.
 // *******************************************************************
 
-#include "extractor.h"
+#include "../include/extractor.h"
 
 namespace mutalyzer
 {
