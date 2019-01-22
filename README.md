@@ -1,2 +1,2 @@
 # extractor-core
-HGVS variant description extraction core in C++
+HGVS variant description extractor core in C++
