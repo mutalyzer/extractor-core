@@ -72,6 +72,7 @@ static double frame_shift_frequency[128][128][5] = {{{.0f}}};
 static char_t const MASK = '$';
 
 
+// Only used to interface to Python: calls the C++ extract function.
 std::vector<Variant> extract_dna(char_t const* const reference,
                                  size_t const        reference_length,
                                  char_t const* const sample,
@@ -82,20 +83,6 @@ std::vector<Variant> extract_dna(char_t const* const reference,
     return result;
 } // extract_dna
 
-
-// Only used to interface to Python: calls the C++ extract function.
-Variant_List extract(char_t const* const reference,
-                     size_t const        reference_length,
-                     char_t const* const sample,
-                     size_t const        sample_length,
-                     int const           type,
-                     char_t const* const codon_string)
-{
-  Variant_List variant_list;
-  extract(variant_list.variants, reference, reference_length, sample, sample_length, type, codon_string);
-  variant_list.weight_position = weight_position;
-  return variant_list;
-} // extract
 
 // The main library function. Extract all variants (regions of change)
 // from the given strings.

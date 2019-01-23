@@ -27,8 +27,9 @@
 namespace mutalyzer
 {
 
+
 // Version string for run-time identification.
-static char const* const VERSION = "3.0.0";
+static char const* const VERSION = "3.0.0-dev";
 
 
 // The character type used for all strings. For now it should just be
@@ -191,14 +192,8 @@ struct Variant_List
 }; // Variant_List
 
 
-std::vector<Variant> extract_dna(char_t const* const reference,
-                                 size_t const        reference_length,
-                                 char_t const* const sample,
-                                 size_t const        sample_length);
-
-
 // *******************************************************************
-// extract function
+// extract_dna function
 //   This function is the interface function for Python. It is just a
 //   wrapper for the C++ extract function below.
 //
@@ -206,20 +201,13 @@ std::vector<Variant> extract_dna(char_t const* const reference,
 //   @arg reference_length: length of the reference string
 //   @arg sample: sample string
 //   @arg sample_length: length of the sample string
-//   @arg type: type of strings  0 --- DNA/RNA (default)
-//                               1 --- Protein
-//                               2 --- Other
-//   @arg codon_string: serialized codon table: 64 characters
-//                      corresponding to the codons AAA, ..., TTT.
-//                      Only for protein extraction (frame shifts).
-//   @return: variant list with metadata
+//   @return: variant list
 // *******************************************************************
-Variant_List extract(char_t const* const reference,
-                     size_t const        reference_length,
-                     char_t const* const sample,
-                     size_t const        sample_length,
-                     int const           type         = TYPE_DNA,
-                     char_t const* const codon_string = 0);
+std::vector<Variant> extract_dna(char_t const* const reference,
+                                 size_t const        reference_length,
+                                 char_t const* const sample,
+                                 size_t const        sample_length);
+
 
 // *******************************************************************
 // extract function
