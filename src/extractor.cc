@@ -11,7 +11,7 @@
 // *******************************************************************
 
 
-#include <cstdlib>
+#include <cinttypes>
 
 
 #include "../include/extractor.h"
@@ -373,8 +373,8 @@ size_t extractor(std::vector<Variant> &variant,
   std::vector<Substring>::const_iterator lcs = substring.begin();
   for (std::vector<Substring>::const_iterator it = substring.begin(); it != substring.end(); ++it)
   {
-    size_t const prefix_diff = std::abs((it->reference_index - reference_start) - (it->sample_index - sample_start));
-    size_t const suffix_diff = std::abs((reference_end - (it->reference_index + it->length)) - (sample_end - (it->sample_index + it->length)));
+    size_t const prefix_diff = std::llabs((it->reference_index - reference_start) - (it->sample_index - sample_start));
+    size_t const suffix_diff = std::llabs((reference_end - (it->reference_index + it->length)) - (sample_end - (it->sample_index + it->length)));
     if (prefix_diff + suffix_diff < diff)
     {
       // A better fitting LCS.
@@ -742,8 +742,8 @@ size_t extractor_protein(std::vector<Variant> &variant,
   std::vector<Substring>::const_iterator lcs = substring.begin();
   for (std::vector<Substring>::const_iterator it = substring.begin(); it != substring.end(); ++it)
   {
-    size_t const prefix_diff = std::abs((it->reference_index - reference_start) - (it->sample_index - sample_start));
-    size_t const suffix_diff = std::abs((reference_end - (it->reference_index + it->length)) - (sample_end - (it->sample_index + it->length)));
+    size_t const prefix_diff = std::llabs((it->reference_index - reference_start) - (it->sample_index - sample_start));
+    size_t const suffix_diff = std::llabs((reference_end - (it->reference_index + it->length)) - (sample_end - (it->sample_index + it->length)));
     if (prefix_diff + suffix_diff < diff)
     {
       // A better fitting LCS.
