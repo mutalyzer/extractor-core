@@ -10,6 +10,10 @@
 //   accepted by the Mutalyzer Name Checker.
 // *******************************************************************
 
+
+#include <cstdlib>
+
+
 #include "../include/extractor.h"
 
 namespace mutalyzer
