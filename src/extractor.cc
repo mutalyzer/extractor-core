@@ -234,7 +234,7 @@ size_t extractor(std::vector<Variant> &variant,
   } // while
   sample_start += i;
   i = 0;
-  while (sample_end - i - 1 > sample_start && sample[sample_end - i - 1] == MASK)
+  while (i + 1 < sample_end - sample_start && sample[sample_end - i - 1] == MASK)
   {
     ++i;
   } // while
@@ -1013,8 +1013,8 @@ size_t LCS_1(std::vector<Substring> &substring,
   // Just a fancy way of allocation a continuous 2D array in heap
   // space.
   typedef size_t array[2][reference_length];
-  array &LCS_line = *(reinterpret_cast<array*>(new size_t[2 * reference_length]));
-  array &LCS_line_rc = *(reinterpret_cast<array*>(new size_t[2 * reference_length]));
+  array &LCS_line = *(reinterpret_cast<array*>(new size_t[2 * reference_length]()));
+  array &LCS_line_rc = *(reinterpret_cast<array*>(new size_t[2 * reference_length]()));
 
   size_t length = 0;
 
@@ -1128,8 +1128,8 @@ size_t LCS_k(std::vector<Substring> &substring,
   // Just a fancy way of allocation a continuous (k+1)D array in heap
   // space.
   typedef size_t array[k + 1][reference_length];
-  array &LCS_line = *(reinterpret_cast<array*>(new size_t[(k + 1) * reference_length]));
-  array &LCS_line_rc = *(reinterpret_cast<array*>(new size_t[(k + 1) * reference_length]));
+  array &LCS_line = *(reinterpret_cast<array*>(new size_t[(k + 1) * reference_length]()));
+  array &LCS_line_rc = *(reinterpret_cast<array*>(new size_t[(k + 1) * reference_length]()));
 
   // Filling the LCS k-mer matrix (actually only the current and the k
   // previous rows). We count in k-mers.
